@@ -1,3 +1,5 @@
+[![Build status](https://ci.appveyor.com/api/projects/status/v44w7opycn8o56w7?svg=true)](https://ci.appveyor.com/project/drako0812/drak-0)
+
 # DRAK-0
 A fantasy console written in C++ using SFML and using ChaiScript for scripting.
 
