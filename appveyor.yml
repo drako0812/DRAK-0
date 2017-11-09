@@ -1,0 +1,12 @@
+version: 0.1.{build}
+image: Visual Studio 2017
+configuration:
+- Debug
+- Release
+platform:
+- x86
+- x64
+build:
+  project: ./DRAK-0.sln
+  parallel: true
+  verbosity: normal
