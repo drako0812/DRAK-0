@@ -1,6 +1,10 @@
 # DRAK-0
 A fantasy console written in C++ using SFML and using ChaiScript for scripting.
 
+## Community Links
+- [Google Group Forum](https://groups.google.com/forum/#!forum/drak-0)
+- [Google+ Community](https://plus.google.com/communities/104848103715411845349?sqinv=R2NnUTc1UmNibjRQX1NzeHRrOGZxQW1PTXBGTWln)
+
 ## Building (Visual Studio 2017)
 *Currently this is the only build option available.*
 
