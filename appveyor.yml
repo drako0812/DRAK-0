@@ -10,3 +10,4 @@ build:
   project: ./DRAK-0.sln
   parallel: true
   verbosity: normal
+cache: c:\tools\vcpkg\installed\
