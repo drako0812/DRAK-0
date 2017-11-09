@@ -10,5 +10,3 @@ build:
   project: ./DRAK-0.sln
   parallel: true
   verbosity: normal
-before_build:
-  - nuget restore
