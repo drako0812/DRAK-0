@@ -11,8 +11,7 @@ matrix:
 environment:
   matrix:
     - build_dir: ""
-    
-    - build_dir: "x64\"
+    - build_dir: "x64/"
 build:
   project: ./DRAK-0.sln
   parallel: true
