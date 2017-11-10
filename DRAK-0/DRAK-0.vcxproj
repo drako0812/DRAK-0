@@ -202,12 +202,13 @@
   <ItemGroup>
     <ClCompile Include="..\deps\nowide_standalone\src\iostream.cpp" />
     <ClCompile Include="src\main.cpp" />
-    <ClCompile Include="src\pch\pch.cpp">
+    <ClCompile Include="src\pch.cpp">
       <UsePrecompiledHeader>Create</UsePrecompiledHeader>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="color.hpp" />
+    <ClInclude Include="src\color.hpp" />
+    <ClInclude Include="src\pch.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
