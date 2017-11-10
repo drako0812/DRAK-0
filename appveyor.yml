@@ -12,5 +12,6 @@ build:
   verbosity: normal
 cache: c:\tools\vcpkg\installed\
 init:
+ - vcpkg update
  - vcpkg install sfml:x86-windows-static
  - vcpkg install sfml:x64-windows-static
