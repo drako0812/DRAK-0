@@ -17,7 +17,6 @@ build:
   verbosity: minimal
 cache: c:\tools\vcpkg
 init:
- - @echo off
  - if "%proj_platform%"=="x86" ( echo "x86" ) ELSE ( if "%proj_platform%"=="x64" ( echo "x64" ) )
  - cd "C:\Tools\vcpkg"
  - git pull
