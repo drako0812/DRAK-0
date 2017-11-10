@@ -9,6 +9,11 @@ A fantasy console written in C++ using SFML and using ChaiScript for scripting.
 - [Google Group Forum](https://groups.google.com/forum/#!forum/drak-0)
 - [Google+ Community](https://plus.google.com/communities/104848103715411845349?sqinv=R2NnUTc1UmNibjRQX1NzeHRrOGZxQW1PTXBGTWln)
 
+## Technical Information
+
+Some technical specs for the fantasy
+console will be put here.
+
 ## Building (Visual Studio 2017)
 *Currently this is the only build option available.*
 
