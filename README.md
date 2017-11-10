@@ -11,8 +11,21 @@ A fantasy console written in C++ using SFML and using ChaiScript for scripting.
 
 ## Technical Information
 
-Some technical specs for the fantasy
-console will be put here.
+**NOTE: these are intended features, they are not yet available.**
+
+- DRAK-0 has a 320x240 6-bit screen.
+- The palette has 64 colors and is customizable.
+- It has 5 256x256 pixel sprite banks with a default
+  intent of:
+  - Bank 0 --> Custom Font
+  - Bank 1-2 --> Background Sprites
+  - Bank 3-4 --> Foreground Sprites
+- It has a 8x8 map bank each containing a 40x30 8x8 sprite map
+- It has a 256 KiB code bank
+- It has a 64 KiB data bank
+- It has support for simultaneous 2 gamepads (d-pad, a, b, x, y, start, select)
+  and 2 2-button mice
+- Scripting supported through ChaiScript
 
 ## Building (Visual Studio 2017)
 *Currently this is the only build option available.*
