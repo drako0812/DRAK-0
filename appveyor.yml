@@ -17,6 +17,8 @@ build:
   verbosity: minimal
 cache: c:\tools\vcpkg
 init:
+ - echo %proj_platform%
+ - echo %proj_configuration%
  - cd "C:\Tools\vcpkg"
  - git pull
  - .\bootstrap-vcpkg.bat
