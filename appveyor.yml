@@ -1,4 +1,5 @@
 version: 0.1.{build}
+skip_non_tags: true
 image: Visual Studio 2017
 configuration:
 - Debug
@@ -9,7 +10,7 @@ platform:
 build:
   project: ./DRAK-0.sln
   parallel: true
-  verbosity: normal
+  verbosity: minimal
 cache: c:\tools\vcpkg\installed\
 init:
  - cd "C:\Tools\vcpkg"
@@ -18,3 +19,20 @@ init:
  - vcpkg install sfml:x86-windows-static
  - vcpkg install sfml:x64-windows-static
  - cd "C:\projects\drak-0"
+artifacts:
+- path: Debug\*.exe
+  name: drak-0_x86_debug.zip
+- path: Release\*.exe
+  name: drak-0_x86_release.zip
+- path: x64\Debug\*.exe
+  name: drak-0_x64_debug.zip
+- path: x64\Release\*.exe
+  name: drak-0_x64_release.zip
+deploy:
+- provider: GitHub
+  description: AppVeyor can now build DRAK-0
+  auth_token:
+    secure: QjNyvU44xwE0GsaXFtbkpErNa9gWu6RbuqaeHtxw1dPFjmbpDOr8QInk7+E8i2Xz6Gy/N9WIJXNn9dfztna9fJlvWWDPwvtfChtfdRXJUPM=
+  artifact: drak-0_x64_debug.zip, drak-0_x64_release.zip, drak-0_x86_debug.zip, drak-0_x86_release.zip
+  draft: true
+  prerelease: true
