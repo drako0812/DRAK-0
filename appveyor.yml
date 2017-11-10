@@ -6,6 +6,9 @@ configuration:
 platform:
 - x86
 - x64
+environment:
+  proj_platform: $(platform)
+  proj_configuration: $(configuration)
 matrix:
   fast_finish: true
 build:
@@ -17,10 +20,10 @@ init:
  - cd "C:\Tools\vcpkg"
  - git pull
  - .\bootstrap-vcpkg.bat
- - if $(platform)==x86 (
+ - if %proj_platform%==x86 (
  -  vcpkg install sfml:x86-windows-static
  - ) ELSE (
- -  if $(platform)==x64 (
+ -  if %proj_platform%==x64 (
  -   vcpkg install sfml:x64-windows-static
  -  )
  - )
