@@ -19,7 +19,7 @@ You should just be able to build and run it. Easy peasy. :)
 
 #### Vcpkg Dependencies
 
-1. [SFML](github.com/SFML/SFML) I've switched over to using [vcpkg](github.com/Microsoft/vcpkg) for depending on SFML.
+1. [SFML](https://github.com/SFML/SFML) I've switched over to using [vcpkg](https://github.com/Microsoft/vcpkg) for depending on SFML.
    NOTE: To use them yourself you will need to install vcpkg and install SFML using one or all of the following:
 
    ```bat
@@ -29,4 +29,5 @@ You should just be able to build and run it. Easy peasy. :)
 
 #### Other Dependencies
 
-1. [ChaiScript](github.com/ChaiScript/ChaiScript/tree/v6.0.0) this is added into the repo manually from github.
+1. [ChaiScript](https://github.com/ChaiScript/ChaiScript) this is added into the repo manually from github.
+2. [Boost.Nowide](https://github.com/artyom-beilis/nowide) this is added into repo manually from github.

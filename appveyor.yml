@@ -12,6 +12,9 @@ build:
   verbosity: normal
 cache: c:\tools\vcpkg\installed\
 init:
- - vcpkg update
+ - cd "C:\Tools\vcpkg"
+ - git pull
+ - .\bootstrap-vcpkg.bat
  - vcpkg install sfml:x86-windows-static
  - vcpkg install sfml:x64-windows-static
+ - cd "C:\projects\drak-0"
