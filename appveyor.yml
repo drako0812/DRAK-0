@@ -31,7 +31,7 @@ deploy:
 - provider: GitHub
   description: AppVeyor can now build DRAK-0
   auth_token:
-    secure: QjNyvU44xwE0GsaXFtbkpErNa9gWu6RbuqaeHtxw1dPFjmbpDOr8QInk7+E8i2Xz6Gy/N9WIJXNn9dfztna9fJlvWWDPwvtfChtfdRXJUPM=
+    secure: 630hO1MXqA8+thTM4TJKeUGHCf/vk+9lYR7ugg4S52z8ZrLX+ApvvXBjClN2rwDG
   artifact: drak-0_x64_debug.zip, drak-0_x64_release.zip, drak-0_x86_debug.zip, drak-0_x86_release.zip
   draft: true
   prerelease: true
