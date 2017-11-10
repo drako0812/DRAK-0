@@ -17,9 +17,15 @@ You should just be able to build and run it. Easy peasy. :)
 
 ### Dependencies
 
-#### Nuget Dependencies
+#### Vcpkg Dependencies
 
-1. SFML (all of the sfml nuget packages), these should be downloaded automatically and configured for you.
+1. [SFML](github.com/SFML/SFML) I've switched over to using [vcpkg](github.com/Microsoft/vcpkg) for depending on SFML.
+   NOTE: To use them yourself you will need to install vcpkg and install SFML using one or all of the following:
+
+   ```bat
+   vcpkg install sfml:x86-windows-static
+   vcpkg install sfml:x64-windows-static
+   ```
 
 #### Other Dependencies
 

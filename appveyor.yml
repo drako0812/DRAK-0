@@ -11,3 +11,6 @@ build:
   parallel: true
   verbosity: normal
 cache: c:\tools\vcpkg\installed\
+init:
+ - vcpkg install sfml:x86-windows-static
+ - vcpkg install sfml:x64-windows-static
