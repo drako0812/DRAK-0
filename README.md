@@ -1,4 +1,4 @@
-[![Build status](https://ci.appveyor.com/api/projects/status/v44w7opycn8o56w7?svg=true)](https://ci.appveyor.com/project/drako0812/drak-0) [![Become a Patron!](https://c5.patreon.com/external/logo/become_a_patron_button@2x.png)](https://www.patreon.com/bePatron?u=4656145)
+[![Build status](https://ci.appveyor.com/api/projects/status/v44w7opycn8o56w7?svg=true)](https://ci.appveyor.com/project/drako0812/drak-0) [![Become a Patron!](https://c5.patreon.com/external/logo/become_a_patron_button@2x.png|width=128](https://www.patreon.com/bePatron?u=4656145)
 
 # DRAK-0
 A fantasy console written in C++ using SFML and using ChaiScript for scripting.
