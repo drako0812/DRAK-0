@@ -23,6 +23,7 @@ init:
  - rem .\bootstrap-vcpkg.bat
  - rem if "%proj_platform%"=="x86" ( vcpkg install sfml:x86-windows-static ) ELSE ( if "%proj_platform%"=="x64" ( vcpkg install sfml:x64-windows-static ) )
  - rem cd "C:\projects\drak-0"
+before_build: if "%proj_platform%"=="x86" ( vcpkg install sfml:x86-windows-static ) ELSE ( if "%proj_platform%"=="x64" ( vcpkg install sfml:x64-windows-static ) )
 artifacts:
 - path: $(platform)/$(configuration)
   name: drak-0_$(platform)_$(configuration)
