@@ -1,11 +1,11 @@
 version: 0.1.{build}
 image: Visual Studio 2017
 configuration:
-- Debug
-- Release
+ - Debug
+ - Release
 platform:
-- x86
-- x64
+ - x86
+ - x64
 environment:
   proj_platform: $(platform)
   proj_configuration: $(configuration)
@@ -24,12 +24,12 @@ install:
  - .\bootstrap-vcpkg.bat
  - if "%proj_platform%"=="x86" ( vcpkg install sfml:x86-windows-static ) else ( if "%proj_platform%"=="x64" ( vcpkg install sfml:x64-windows-static ) )
  - cd "C:\projects\drak-0"
- after_build:
+after_build:
   - del /S "C:\projects\DRAK-0\%proj_configuration%\*.iobj"
   - del /S "C:\projects\DRAK-0\%proj_configuration%\*.ipdb"
   - del /S "C:\projects\DRAK-0\%proj_configuration%\*.ilk"
   - del /S "C:\projects\DRAK-0\%proj_configuration%\*.pdb"
- artifacts:
+artifacts:
   - path: $(platform)/$(configuration)
     name: drak-0_$(platform)_$(configuration)
 deploy:
