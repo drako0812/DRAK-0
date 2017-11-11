@@ -6,4 +6,4 @@ goto quit
 mkdir "C:\projects\DRAK-0\x86\%proj_configuration%"
 xcopy "C:\projects\DRAK-0\%proj_configuration%" "C:\projects\DRAK-0\x86\%proj_configuration%" /s /e /y
 
-:exit
+:quit

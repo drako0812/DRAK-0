@@ -26,7 +26,7 @@ init:
 after_build:
  - call after_build.bat
 artifacts:
-- path: $(platform)/$(configuration)/DRAK-0.exe
+- path: $(platform)/$(configuration)
   name: drak-0_$(platform)_$(configuration)
   type: zip
 deploy:
