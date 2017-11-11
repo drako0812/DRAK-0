@@ -17,13 +17,17 @@ build:
   verbosity: minimal
 cache: c:\tools\vcpkg
 init:
- - if "%proj_platform%"=="x86" ( echo "x86" ) ELSE ( if "%proj_platform%"=="x64" ( echo "x64" ) )
  - cd "C:\Tools\vcpkg"
  - git pull
  - .\bootstrap-vcpkg.bat
  - if "%proj_platform%"=="x86" ( vcpkg install sfml:x86-windows-static ) ELSE ( if "%proj_platform%"=="x64" ( vcpkg install sfml:x64-windows-static ) )
  - cd "C:\projects\drak-0"
 #before_build: if "%proj_platform%"=="x86" ( vcpkg install sfml:x86-windows-static ) ELSE ( if "%proj_platform%"=="x64" ( vcpkg install sfml:x64-windows-static ) )
+after_build:
+ - if "%proj_platform%"=="x86" (
+ - mkdir "/%prof_platform%/%proj_configuration%"
+ - xcopy "/%proj_configuration%" "/%proj_platform%/%proj_configuration%" /s /e
+ - )
 artifacts:
 - path: $(platform)/$(configuration)/DRAK-0.exe
   name: drak-0_$(platform)_$(configuration)
