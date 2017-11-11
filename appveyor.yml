@@ -28,7 +28,6 @@ after_build:
 artifacts:
 - path: $(platform)/$(configuration)
   name: drak-0_$(platform)_$(configuration)
-  type: zip
 deploy:
 - provider: GitHub
   description: AppVeyor can now build DRAK-0
