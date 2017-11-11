@@ -15,7 +15,9 @@ build:
   project: ./DRAK-0.sln
   parallel: true
   verbosity: minimal
-cache: c:\tools\vcpkg
+cache:
+ - c:\tools\vcpkg
+ - "c:\projects\drak-0\.vs"
 install:
  - cd "C:\Tools\vcpkg"
  - git pull
