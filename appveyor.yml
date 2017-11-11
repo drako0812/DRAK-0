@@ -16,7 +16,7 @@ build:
   parallel: true
   verbosity: minimal
 cache:
- - c:\tools\vcpkg
+ - c:\tools\vcpkg\installed
  - c:\projects\drak-0\ipch
 install:
  - cd "C:\Tools\vcpkg"
