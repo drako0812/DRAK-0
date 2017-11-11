@@ -17,7 +17,7 @@ build:
   verbosity: minimal
 cache:
  - c:\tools\vcpkg
- - "c:\projects\drak-0\.vs"
+ - "c:\\projects\\drak-0\\.vs"
 install:
  - cd "C:\Tools\vcpkg"
  - git pull
