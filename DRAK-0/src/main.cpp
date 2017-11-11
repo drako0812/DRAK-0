@@ -1,27 +1,14 @@
-//#include <iostream>
-#include <nowide/iostream.hpp>
+#include "pch.h"
 
-#include <SFML/System.hpp>
-#include <SFML/Graphics.hpp>
-#include <SFML/Window.hpp>
-#include <SFML/Audio.hpp>
-
-#include <chaiscript/chaiscript.hpp>
-#include <chaiscript/chaiscript_stdlib.hpp>
+#include "system.hpp"
 
 double function(int i, double j) {
     return i * j;
 }
 
-constexpr char code[] = 
-R"(
-print(function(3, 4.75));
-)";
 
 int main(int argc, char * argv[]) {
-    chaiscript::ChaiScript chai;
-    chai.add(chaiscript::fun(&function), "function");
-    chai(code);
+    drak::System system;
 
     sf::RenderWindow window(sf::VideoMode(800, 600), "DRAK-0");
 

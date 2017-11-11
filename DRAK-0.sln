@@ -5,6 +5,11 @@ VisualStudioVersion = 15.0.27004.2006
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "DRAK-0", "DRAK-0\DRAK-0.vcxproj", "{D576964F-A218-48D7-95AB-BD939AFD6F34}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{425410EF-3D28-4F1F-BEDA-A387B0FEB6D4}"
+	ProjectSection(SolutionItems) = preProject
+		after_build.bat = after_build.bat
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
