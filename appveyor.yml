@@ -16,7 +16,7 @@ build:
   parallel: true
   verbosity: minimal
 cache: c:\tools\vcpkg
-init:
+install:
  - cd "C:\Tools\vcpkg"
  - git pull
  - .\bootstrap-vcpkg.bat
