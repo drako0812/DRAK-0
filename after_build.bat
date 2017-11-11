@@ -5,6 +5,6 @@ goto quit
 
 :copy
 mkdir "C:/projects/DRAK-0/%prof_platform%/%proj_configuration%"
-xcopy "C:/projects/DRAK-0/%proj_configuration%" "C:/projects/DRAK-0/%proj_platform%/%proj_configuration%" /s /e
+xcopy "C:/projects/DRAK-0/%proj_configuration%/" "C:/projects/DRAK-0/%proj_platform%/%proj_configuration%/" /s /e /y
 
 :exit
