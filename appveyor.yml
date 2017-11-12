@@ -41,6 +41,7 @@ deploy:
    draft: true
    prelease: true
 
+for:
 - 
   branches:
     only:
