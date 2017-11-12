@@ -61,7 +61,7 @@ namespace drak {
         chaiscript::ChaiScript _scriptEngine;
         bool _mustQuit;
         
-        using time_type = decltype(std::chrono::high_resolution_type::now());
+        using time_type = decltype(std::chrono::high_resolution_clock::now());
         
         time_type _exeStart;
 
