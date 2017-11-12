@@ -1,4 +1,4 @@
-version: 0.1.{build}
+#version: 0.1.{build}
 image: Visual Studio 2017
 configuration:
  - Debug
@@ -40,3 +40,13 @@ deploy:
    artifact: drak-0_$(platform)_$(configuration)
    draft: true
    prelease: true
+- 
+  branches:
+    only:
+      - master
+  version: 0.1.{build}
+- 
+  branches:
+    only:
+      - dev
+  version: 0.1.x-$(APPVEYOR_REPO_COMMIT)
