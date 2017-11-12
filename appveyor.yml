@@ -40,11 +40,13 @@ deploy:
    artifact: drak-0_$(platform)_$(configuration)
    draft: true
    prelease: true
+
 - 
   branches:
     only:
       - master
   version: 0.1.{build}
+
 - 
   branches:
     only:
