@@ -60,9 +60,16 @@ namespace drak {
 
         chaiscript::ChaiScript _scriptEngine;
         bool _mustQuit;
+        
+        using time_type = decltype(std::chrono::high_resolution_type::now());
+        
+        time_type _exeStart;
 
         static std::shared_ptr<System> system;
     public:
+    
+        class ExitCalledException {};
+    
         System() : _mustQuit{false}, _memory{std::make_shared<array_type>()}, _bits{_memory} { }
 
         chaiscript::ChaiScript & ScriptEngine() {
@@ -88,7 +95,11 @@ namespace drak {
             assert((source.length() <= CodeSize) && "ERROR: Code is too big! Maximum of 256 KiB or 262144 Bytes.");
             //strncpy((char *)(_memory->data()), source.c_str(), CodeSize);
             strncpy_s((char *)(_memory->data()), CodeSize, source.c_str(), CodeSize);
-            _scriptEngine.eval(source);
+            try {
+                _scriptEngine.eval(source);
+            } catch(ExitCalledException const& ex) {
+                // Do nothing
+            }
         }
 
         // These functions a bound to the scripting API
@@ -141,6 +152,7 @@ namespace drak {
 
         void _exit() {
             _mustQuit = true;
+            throw ExitCalledException();
         }
 
         int _pix(int x, int y, int color = -1) {
@@ -148,7 +160,10 @@ namespace drak {
         }
 
         int _time() {
-            return 0;
+            static time_type now;
+            now = std::chrono::high_resolution_clock::now();
+            auto diff = now - _exeStart;
+            return std::chrono::milliseconds(diff).count();
         }
 
         void _trace(std::string const& msg) {

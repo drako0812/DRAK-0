@@ -57,8 +57,12 @@ int main(int argc, char * argv[]) {
                     window.close();
                 }
             }
-
-            sys.Update();
+            
+            try {
+                sys.Update();
+            } catch(drak::System::ExitCalledException const& ex) {
+                // Do nothing
+            }
 
             window.clear();
             window.display();
