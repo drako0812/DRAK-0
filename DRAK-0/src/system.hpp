@@ -163,7 +163,7 @@ namespace drak {
             static time_type now;
             now = std::chrono::high_resolution_clock::now();
             auto diff = now - _exeStart;
-            return std::chrono::milliseconds(diff).count();
+            return std::chrono::milliseconds(diff)::count();
         }
 
         void _trace(std::string const& msg) {
