@@ -8,40 +8,45 @@ namespace drak {
 
     template <unsigned int Bytes>
     class BitArray {
-        unsigned char _data[Bytes];
+        std::shared_ptr<std::array<unsigned char, Bytes>> _data;
 
     public:
-        BitArray() {
-            memset(_data, 0x00, Bytes);
+        BitArray(std::shared_ptr<std::array<unsigned char, Bytes>> source_memory=nullptr) {
+            if(source_memory == nullptr) {
+                _data = std::make_shared<std::array<unsigned char, Bytes>>();
+                memset(_data.get()->data(), 0x00, Bytes);
+            } else {
+                _data = source_memory;
+            }
         }
 
         void SetAll() {
-            memset(_data, 0xFF, Bytes);
+            memset(_data_data.get()->data(), 0xFF, Bytes);
         }
 
         void ClearAll() {
-            memset(_data, 0x00, Bytes);
+            memset(_data_data.get()->data(), 0x00, Bytes);
         }
 
         void SetBit(unsigned int idx) {
 #ifdef _DEBUG
             assert(((idx / 8) < Bytes) && "ERROR: SetBit given an out-of-bounds index");
 #endif
-            _data[idx / 8] |= 1 << (idx % 8);
+            _data.get()->data()[idx / 8] |= 1 << (idx % 8);
         }
 
         void ClearBit(unsigned int idx) {
 #ifdef _DEBUG
             assert(((idx / 8) < Bytes) && "ERROR: ClearBit given an out-of-bounds index");
 #endif
-            _data[idx / 8] &= ~(1 << (idx % 8));
+            _data.get()->data()[idx / 8] &= ~(1 << (idx % 8));
         }
 
         bool TestBit(unsigned int idx) {
 #ifdef _DEBUG
             assert(((idx / 8) < Bytes) && "ERROR: TestBit given an out-of-bounds index");
 #endif
-            return ((_data[idx / 8] & (1 << (idx % 8))) != 0);
+            return ((_data.get()->data()[idx / 8] & (1 << (idx % 8))) != 0);
         }
 
         unsigned char GetBitsAt(unsigned int idx, unsigned char num_bits) {

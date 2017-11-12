@@ -1,8 +1,10 @@
 #pragma once
 
 #include <functional>
+#include <cerrno>
 
 #include <nowide/iostream.hpp>
+#include <nowide/fstream.hpp>
 
 #include <randutils.hpp>
 

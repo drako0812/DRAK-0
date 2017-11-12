@@ -41,5 +41,11 @@
     <ClInclude Include="src\system.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="src\font_data.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="example.chai" />
   </ItemGroup>
 </Project>

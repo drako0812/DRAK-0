@@ -223,9 +223,13 @@
   <ItemGroup>
     <ClInclude Include="src\bit_array.hpp" />
     <ClInclude Include="src\color.hpp" />
+    <ClInclude Include="src\font_data.hpp" />
     <ClInclude Include="src\pch.h" />
     <ClInclude Include="src\screen_buffer.hpp" />
     <ClInclude Include="src\system.hpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="example.chai" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -1,0 +1,9 @@
+trace("example.chai");
+trace("Starting Up...");
+
+def update() {
+  // Do things here
+}
+
+trace("Shutting Down...");
+exit()
