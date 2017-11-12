@@ -52,4 +52,4 @@ for:
   branches:
     only:
       - dev
-  version: 0.1.x-dev
+  version: 0.1.x-dev-{build}
