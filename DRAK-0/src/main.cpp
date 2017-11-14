@@ -47,7 +47,9 @@ int main(int argc, char * argv[]) {
         sf::RenderWindow window(sf::VideoMode(800, 600), "DRAK-0");
 
         // Load Script/Cartridge
-        sys.LoadScript(do_source);
+        if(!sys.LoadScript(do_source)) {
+            nowide::cerr << "ERROR: Missing `update` function\n";
+        }
 
         while(window.isOpen() && !sys.MustQuit()) {
             sf::Event event;

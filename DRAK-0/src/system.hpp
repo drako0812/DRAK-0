@@ -77,20 +77,27 @@ namespace drak {
         }
 
         void Update() {
+            _scriptEngine.eval("update();");
+        }
+        
+        bool HasUpdate() {
             auto update_it = _scriptEngine.get_locals().find("update");
             if(update_it != _scriptEngine.get_locals().end()) {
-                update_it->second.get().cast<std::function<void()>>()();
-            } else {
-                nowide::cerr << "ERROR: Cartridge must have a function \"update\" defined!\n";
-                _mustQuit = true;
+                try {
+                    auto & update_func = update_it->second.get().cast<std::function<void()>>();
+                } catch(...) {
+                    return false;
+                }
+                return true;
             }
+            return false;
         }
 
         bool MustQuit() {
             return _mustQuit;
         }
 
-        void LoadScript(std::string const& source) {
+        bool LoadScript(std::string const& source) {
             nowide::cout << "Source size = " << source.length() << std::endl;
             assert((source.length() <= CodeSize) && "ERROR: Code is too big! Maximum of 256 KiB or 262144 Bytes.");
             //strncpy((char *)(_memory->data()), source.c_str(), CodeSize);
@@ -100,6 +107,7 @@ namespace drak {
             } catch(ExitCalledException const& ex) {
                 // Do nothing
             }
+            return HasUpdate();
         }
 
         // These functions a bound to the scripting API
