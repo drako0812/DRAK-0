@@ -32,14 +32,6 @@ after_build:
 artifacts:
  - path: $(platform)/$(configuration)
    name: drak-0_$(platform)_$(configuration)
-deploy:
- - provider: GitHub
-   description: AppVeyor Release for DRAK-0
-   auth_token:
-     secure: 630hO1MXqA8+thTM4TJKeUGHCf/vk+9lYR7ugg4S52z8ZrLX+ApvvXBjClN2rwDG
-   artifact: drak-0_$(platform)_$(configuration)
-   draft: true
-   prelease: true
 
 for:
 - 
@@ -47,9 +39,26 @@ for:
     only:
       - master
   version: 0.1.{build}
+  deploy:
+   - provider: GitHub
+     description: AppVeyor Release for DRAK-0
+     auth_token:
+       secure: 630hO1MXqA8+thTM4TJKeUGHCf/vk+9lYR7ugg4S52z8ZrLX+ApvvXBjClN2rwDG
+     artifact: drak-0_$(platform)_$(configuration)
+     draft: true
+     prelease: true
 
 - 
   branches:
     only:
       - dev
-  version: 0.1.x-dev-{build}
+  version: 0.1.x-dev
+  deploy:
+   - provider: GitHub
+     description: AppVeyor Release for DRAK-0
+     auth_token:
+       secure: 630hO1MXqA8+thTM4TJKeUGHCf/vk+9lYR7ugg4S52z8ZrLX+ApvvXBjClN2rwDG
+     artifact: drak-0-dev_$(platform)_$(configuration)
+     draft: true
+     prelease: true
+     force_update: true
