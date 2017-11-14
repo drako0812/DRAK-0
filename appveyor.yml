@@ -38,7 +38,7 @@ for:
   branches:
     only:
       - master
-  version: 0.1.{build}
+  version: 0.1.100.{build}
   deploy:
    - provider: GitHub
      description: AppVeyor Release for DRAK-0
@@ -52,13 +52,12 @@ for:
   branches:
     only:
       - dev
-  version: 0.1.x-dev
+  version: 0.1.x.{build}-dev
   deploy:
    - provider: GitHub
      description: AppVeyor Release for DRAK-0
      auth_token:
        secure: 630hO1MXqA8+thTM4TJKeUGHCf/vk+9lYR7ugg4S52z8ZrLX+ApvvXBjClN2rwDG
-     artifact: drak-0-dev_$(platform)_$(configuration)
+     artifact: drak-0_$(platform)_$(configuration)
      draft: true
      prelease: true
-     force_update: true
