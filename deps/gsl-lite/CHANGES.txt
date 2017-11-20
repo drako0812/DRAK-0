@@ -1,0 +1,263 @@
+Changes for GSL Lite – Guideline Support Library for C++98/03 and later
+
+version 0.25.0 2017-10-22
+
+- Restrict owner<T> to pointers if possible, per issue #80.
+- Introduce gsl_is_delete, per issue #81.
+- Add deleted operators for not_null<>, per issue #82.
+- Add more comparison operators for not_null<>, per issue #83.
+- Use = default for not_null copy assignment/construction if available.
+- Take parameter in not_null assignment by value as in ctor.
+
+version 0.24.0 2017-07-10
+
+- Add try it online badge.
+- Implement to_byte(), to_integer() for C++17 per issue #75 (thanks to David Mugnai, @cinghiale).
+
+version 0.23.0 2017-06-29
+
+- Enable use of option -Wundef per issue #74.
+- Update lest to version 1.30.1.
+- Check macro via #ifdef if possibly undefined (support -Wundef).
+- Fix check for make_unique().
+- Fix CMake compiler selection.
+- Make struct definition nonlocal for C++98, C++03.
+- Add not_null<> tests for member access and dereferencing.
+- Add dereference operator to not_null<> per issue #73.
+- Add compiler version information.
+- Add constexpr to not_null<>.
+- Report gsl_CPP11_OR_GREATER etc.
+
+version 0.22.0 2017-04-27
+
+- Add operator<< for string_span (thanks to Magnus Bergsten, @Sillamacka).
+- Fix conversion and sign-conversion warnings (thanks to Magnus Bergsten, @Sillamacka).
+- Fix memory leak, which prevents tests to pass with address sanitizing (thanks to @Vladimir Rapatskiy).
+- Fix order of add_compile_options() and its targets in CMakeLists.txt.
+- Replace fail_fast's base with std::logic_error as per issue #69.
+- Update lest_cpp03.hpp to version 1.29.1 (Fix above conversion and sign-conversion warnings).
+
+version 0.21.0 2016-11-28
+
+- Add as_bytes() for basic_string_span<> (thanks to Magnus Bergsten, @Sillamacka).
+- Fix: remove call to hash<std::size_t>(), undefined with Xcode on Mac OS X (issue #63, thanks to Dave Tallman).
+- Fix: remove static from enum in integral_constant (thanks to Dave Tallman).
+- Change t[g]-all.bat to test variations of C++ std/span index type/contract violation response.
+
+version 0.20.0 2016-11-18
+
+- Remove used_length(), same as length()
+- Rename bytes(), used_bytes() to size_bytes(), length_bytes()
+- Make final_act<T> and final_act_return<T> useable with VC11/VS2012 (PR #61, thanks to @lm1458777)
+- Fix fail_fast_assert() for gcc < 6 for no-throw/std::terminate() case (comment, thanks to @xsacha)
+- Fix =default with gsl_noexcept for gcc < 6 for basic_string_span (PR #58, thanks to @xsacha)
+
+version 0.19.0 2016-11-17
+
+- Rename as_span() creator functions to make_span() (issue #49).
+- Add make_span() for gsl::shared_ptr, gsl::unique_ptr.
+- Add section Algorithms to feature table.
+- Remove maybe_null from feature table (M-GSL PR 123, 124, 126).
+
+version 0.18.0 2016-11-11
+
+- Remove span::size_type, deprecated since 0.12.0.
+- Add gsl_CONFIG_SPAN_INDEX_TYPE configuration macro; default size_t.
+- Add span constructor for std::array<> const &.
+- Add span constructor for std::unique_ptr, std::shared_ptr.
+- Make span's unconstrained constructor disabled at default.
+  This enables construction from unique_ptr and shared_ptr.
+- Prevent conversion warning [-Wconversion]
+- Prevent old-style casts warning [-Wold-style-cast]
+- Replace arr with &arr[0], not automatic decay (several).
+- Update lest_cpp03.hpp to version 1.27.2
+- Fix noexcept with default ctors for GNUC < 4.9.0 (adapted PR #58, thanks to Dmitry Banschikov, @ubique).
+
+version 0.17.2 2016-11-10
+
+- Use &arr[0], not automatic decay
+- Workaround GNUC 5 throw constexpr bug
+- Workaround for GNUC 5.2.0 failing two tests
+- Use order: gsl_api inline gsl_constexpr type f() gsl_noexcept
+
+version 0.17.1 2016-11-09
+
+- Fixes thanks to Magnus Bergsten, @Sillamacka:
+- Marked several functions as constexpr.
+- Fix: make gsl::fail_fast_assert() constexpr allowing Expects() from constexpr functions.
+- Fix: prevent pointer decay to let remove_z() invoke wrong overload.
+- Fix: remove span used in string_length(), it has two bound problems.
+
+version 0.17.0 2016-11-09
+
+- Add free-standing as_bytes() and as_writable_bytes() as in M-GSL (PR #55, thanks to Dmitry Banschikov, @ubique).
+- Member methods as_bytes() and as_writable_bytes() have been deprecated.
+
+version 0.16.1 2016-11-09
+
+- Fix macro used with string_span comparison.
+
+version 0.16.0 2016-11-09
+
+- Allow comparison with types that are convertible to string_span (issue #53, thanks to Magnus Bergsten, @Sillamacka).
+
+version 0.15.0 2016-11-09
+
+- Add basic_string_span (issue #53, thanks to Magnus Bergsten, @Sillamacka).
+
+version 0.14.0 2016-11-03
+
+- narrow() now uses std::terminate(), unless gsl_CONFIG_CONTRACT_VIOLATION_THROWS (issue #50, thanks to @Sp3EdeR)
+- narrow_cast<>() now forwards its argument if possible (issue #44).
+
+version 0.13.0 2016-10-09
+
+- Add on_return() and on_error() as experimental feature (gsl_FEATURE_EXPERIMENTAL_RETURN_GUARD).
+
+version 0.12.0 2016-10-08
+
+- Fix test compilation with GCC 4.8.4.
+- Remove span::value_type deprecated since version 0.9.0 (use element_type).
+- Deprecate span::size_type (issue #42).
+- Make span's stream output for tests more container-like.
+- Make operations on byte C++11 constexpr except for op=() variants.
+- Rename “Guidelines support library" to "Guideline -" (issue #39).
+- Add tests for C++11 constexpr-ness.
+- Add copy algorithm for span (issue #36).
+- Add GSL version by Vicente J. Botet Escriba to Readme.
+
+version 0.11.0 2016-09-04
+
+- Add missing byte comparisons (non-enum class case).
+- Add missing gsl_noexcept to byte equality operator.
+
+version 0.10.1 2016-09-02
+
+- Use struct with unsigned char for byte with pre-C++17 (issue #34).
+
+version 0.10.0 2016-08-31
+
+- Remove operator bool() per issue #33.
+- Remove deprecated gsl_CONFIG_THROWS_FOR_TESTING.
+- Remove parentheses and allow lest to decompose span comparison expressions.
+- Allow comparison of spans with a different element type or const-volatile-ness.
+- Add gsl_CONFIG_ALLOWS_NONSTRICT_SPAN_COMPARISON for span comparison configuration.
+
+version 0.9.1 2016-08-25
+
+- Move conditional inclusion of cstdint out of namespace gsl.
+
+version 0.9.0 2016-08-23
+
+- Provide gsl/gsl header for compatibility with M-GSL.
+- Add index_type to span while keeping size_type.
+- Add gsl_noexcept to iterator creators begin() etc.
+- Add at(std::initializer_list<T>, index).
+- Add at(span<T>, index).
+- Add call operator to span for element access as per p0122r3.
+- Add test: empty spans compare equal as per p0122r3.
+- Use span's size_type.
+- Move at() to section utilities.
+- Move comparison functions outside span.
+- Deprecate span::value_type, use span::element_type per M-GSL, p0122r3.
+- Remove non-const index operator, at().
+
+version 0.8.0 2016-08-20
+
+- Add operations for byte type.
+
+version 0.7.5 2016-08-08
+
+- Fix to create empty subspan, enabling slicing off data until span is empty (PR #26, thanks to Janusz Chorko).
+
+version 0.7.4 2016-07-09
+
+- Revert "Remove boundary check from operator[]()" of v0.7.3.
+
+version 0.7.3 2016-07-08
+
+- Removed boundary check from operator[]()
+- Changed indexing to return non-const reference and make it STL compliant (issue #23, thanks to @marton78)
+- Made converting constructors public (issue #22, thanks to @marton78).
+
+version 0.7.2 2016-07-06
+
+- Fixed as_span() for const arguments (thanks to Dave Tallman).
+
+version 0.7.1 2016-07-01
+
+- Fixed with_container_t to be literal type (thanks to Dave Tallman).
+
+version 0.7.0 2016-06-30
+
+- Added tagged construction from a container to span.
+- Replaced gsl_CONFIG_ALLOWS_SPAN_CONTAINER_CTOR with gsl_CONFIG_ALLOWS_UNCONSTRAINED_SPAN_CONTAINER_CTOR
+
+version 0.6.1 2016-06-29
+
+- Fixed library for the removal of _HAS_CPP0X in VS2015 Update 3 (Issue #21, thanks to @exjam)
+- Added tests tagged [.stdlangauge], [.stdlibrary] to inspect various gsl_HAVE_... macros.
+- Added tag [.stdc++] to test to inspect __cplusplus.
+- Updated lest test framework to version 1.27.0.
+
+version 0.6.0 2016-06-25
+
+- Renamed Final_act to final_act to follow standard library conventions.
+- Fixed final_act to also work without copy-elision optimization, issue #19 (thanks to Marco Arena).
+
+version 0.5.0 2016-06-24
+
+- Added compatibility with MS GSL symbolic names for contract violation response control.
+- Added contract violation response control as suggested in N4415, Simple Contracts for C++.
+
+version 0.4.1 2016-06-23
+
+- Added gsl_CONFIG_ALLOWS_SPAN_CONTAINER_CTOR for pre-C++11 (default: 1).
+- Avoided std::distance() to support CUDA.
+- Avoided shadowing according to the too-strict option -Wshadow of gcc before 4.8 (thanks to Dave Tallman).
+- Removed comparisons of unsigned with zero.
+- Fixed ensure_z() without length (thanks to Dave Tallman).
+
+version 0.4.0 2016-05-28
+
+- Added support for CUDA compilation.
+
+version 0.3.2 2016-05-27
+
+- Fixed compilation error in narrow() for VC11 (VS2012).
+
+version 0.3.1 2016-05-25
+
+- Added test for construction of a span from another span of a compatible type.
+- Changed view to span in specification.
+
+version 0.3.0 2016-05-24
+
+- Added first(), last() and subspan().
+- Improved example 02-span.cpp (thanks to Dave Tallman).
+
+version 0.2.2 2016-05-23
+
+- Fixed missing return in not_null copy-assignment (thanks to PVS-Studio).
+
+version 0.2.1 2016-05-23
+
+- Added several tests.
+- Added definition of gsl_HAVE_DEFAULT_FUNCTION_TEMPLATE_ARG.
+- Prevented using default function template argument in span for pre-VS2013 (VC12).
+- Fixed compile error with clang targeting MSVC, PR #17 (Thanks to @ned14).
+- Fixed data access of empty container, PR #16 (Thanks to @realzhtw).
+
+version 0.2.0 2016-02-02
+
+- Removed constructor span( U (&arr)[N], size_type size ), not part of M-GSL and in favour of:
+- Changed constructor to span( pointer data, size_type size ), removing & from pointer & data (Thanks to @realzhtw).
+- Added construction from an l-value for C++11 onwards.
+
+version 0.1.0 2016-02-02
+
+- Added move-construction and move-assignment to span<>.
+
+version 0.0 2015-09-25
+
+- Initial release.

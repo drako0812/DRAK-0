@@ -22,7 +22,7 @@ install:
  - cd "C:\Tools\vcpkg"
  - git pull
  - .\bootstrap-vcpkg.bat
- - if "%proj_platform%"=="x86" ( vcpkg install sfml:x86-windows-static ) else ( if "%proj_platform%"=="x64" ( vcpkg install sfml:x64-windows-static ) )
+ - if "%proj_platform%"=="x86" ( vcpkg install sfml:x86-windows ) else ( if "%proj_platform%"=="x64" ( vcpkg install sfml:x64-windows ) )
  - cd "C:\projects\drak-0"
 after_build:
  - del /S "C:\projects\DRAK-0\%proj_platform%\%proj_configuration%\*.iobj"

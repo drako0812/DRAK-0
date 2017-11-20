@@ -2,8 +2,10 @@ trace("example.chai");
 trace("Starting Up...");
 
 def update() {
-  // Do things here
+  for(var j = 0; j < 240; ++j) {
+    for(var i = 0; i < 320; ++i) {
+      var c = random(0, 64);
+      pix(i, j, c);
+    }
+  }
 }
-
-trace("Shutting Down...");
-exit()
