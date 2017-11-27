@@ -24,105 +24,6 @@
     <ClCompile Include="src\pch.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\deps\lua\src\lapi.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\deps\lua\src\lauxlib.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\deps\lua\src\lbaselib.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\deps\lua\src\lbitlib.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\deps\lua\src\lcode.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\deps\lua\src\lcorolib.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\deps\lua\src\lctype.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\deps\lua\src\ldblib.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\deps\lua\src\ldebug.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\deps\lua\src\ldo.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\deps\lua\src\ldump.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\deps\lua\src\lfunc.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\deps\lua\src\lgc.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\deps\lua\src\linit.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\deps\lua\src\liolib.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\deps\lua\src\llex.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\deps\lua\src\lmathlib.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\deps\lua\src\lmem.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\deps\lua\src\loadlib.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\deps\lua\src\lobject.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\deps\lua\src\lopcodes.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\deps\lua\src\loslib.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\deps\lua\src\lparser.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\deps\lua\src\lstate.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\deps\lua\src\lstring.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\deps\lua\src\lstrlib.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\deps\lua\src\ltable.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\deps\lua\src\ltablib.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\deps\lua\src\ltm.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\deps\lua\src\lundump.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\deps\lua\src\lutf8lib.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\deps\lua\src\lvm.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\deps\lua\src\lzio.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\color.hpp">
@@ -152,5 +53,12 @@
     <None Include="DRAK-0.licenseheader" />
     <None Include="example.lua" />
     <None Include="example_input.lua" />
+    <None Include="example_pal_swap.lua" />
+    <None Include="example_line.lua" />
+    <None Include="example_circ.lua" />
+    <None Include="example_circb.lua" />
+    <None Include="example_rectb.lua" />
+    <None Include="example_rect.lua" />
+    <None Include="example_sphere.lua" />
   </ItemGroup>
 </Project>

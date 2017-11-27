@@ -25,10 +25,11 @@
 
 #include <chrono>
 #include <functional>
-#include <cerrno>
 
+#include <cerrno>
 #include <cstdint>
 #include <cstdlib>
+#include <cmath>
 
 #include <nowide/iostream.hpp>
 #include <nowide/fstream.hpp>

@@ -103,7 +103,7 @@ int main(int argc, char * argv[]) {
         auto & sys = drak::System::Get();
         auto & screen = sys.Screen();
 
-        sf::RenderWindow window(sf::VideoMode(800, 600), "DRAK-0");
+        sf::RenderWindow window(sf::VideoMode(320, 240), "DRAK-0");
         window.setFramerateLimit(60);
         window.setMouseCursorVisible(false);
         window.setView(calcView(window.getSize(), desired_size));

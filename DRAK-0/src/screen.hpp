@@ -130,6 +130,9 @@ namespace drak {
         }
 
         void Draw() {
+            // Always make sure palette is synced
+            memcpy(_palette.data, _palette_bytes.data(), 64 * 3);
+
             for(int j = 0; j < Height; j++) {
                 for(int i = 0; i < Width; i++) {
                     _img.setPixel(i, j, GetPalette(GetPixel(i, j)).ToSFColor());

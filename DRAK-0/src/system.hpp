@@ -25,6 +25,8 @@
 #include "screen.hpp"
 #include "input.hpp"
 
+#include <cstdint>
+
 namespace drak {
 
     class System {
@@ -324,6 +326,235 @@ namespace drak {
             return _rng.uniform(m, n);
         }
 
+        void _memcpy(int dest, int src, int len) {
+            assert((dest >= 0) && ((dest + len) < MemoryBytes) && (src >= 0) && ((src + len) < MemoryBytes) && "ERROR: memcpy out of bounds!");
+            memcpy(_memory->data() + dest, _memory->data() + src, len);
+        }
+
+        void _memset(int dest, int val, int len) {
+            assert((dest >= 0) && ((dest + len) < MemoryBytes) && "ERROR: memset out of bounds!");
+            memset(_memory->data() + dest, val, len);
+        }
+
+        int _peek(int addr) {
+            assert((addr >= 0) && (addr < MemoryBytes) && "ERROR: peek out of bounds!");
+            return _memory->at(addr);
+        }
+
+        void _poke(int addr, int val) {
+            assert((addr >= 0) && (addr < MemoryBytes) && "ERROR: poke out of bounds!");
+            _memory->at(addr) = val;
+        }
+
+        // Implementation taken from: https://github.com/ssloy/tinyrenderer/wiki/Lesson-1:-Bresenham%E2%80%99s-Line-Drawing-Algorithm
+        void _line(int x0, int y0, int x1, int y1, int col) {
+            bool steep = false;
+            if(std::abs(x0 - x1) < std::abs(y0 - y1)) {
+                std::swap(x0, y0);
+                std::swap(x1, y1);
+                steep = true;
+            }
+            if(x0 > x1) {
+                std::swap(x0, x1);
+                std::swap(y0, y1);
+            }
+            int dx = x1 - x0;
+            int dy = y1 - y0;
+            int derror2 = std::abs(dy) * 2;
+            int error2 = 0;
+            int y = y0;
+            for(int x = x0; x <= x1; x++) {
+                if(steep) {
+                    _screen.SetPixel(y, x, col);
+                } else {
+                    _screen.SetPixel(x, y, col);
+                }
+                error2 += derror2;
+                if(error2 > dx) {
+                    y += (y1 > y0 ? 1 : -1);
+                    error2 -= dx * 2;
+                }
+            }
+        }
+
+        // Implementation taken from: https://en.wikipedia.org/wiki/Midpoint_circle_algorithm#C_example
+        /*void _circb(int x0, int y0, int rad, int col) {
+            int x = rad - 1;
+            int y = 0;
+            int dx = 1;
+            int dy = 1;
+            int err = dx - (rad << 1);
+
+            while(x >= y) {
+                _screen.SetPixel(x0 + x, y0 + y, col);
+                _screen.SetPixel(x0 + y, y0 + x, col);
+                _screen.SetPixel(x0 - y, y0 + x, col);
+                _screen.SetPixel(x0 - x, y0 + y, col);
+                _screen.SetPixel(x0 - x, y0 - y, col);
+                _screen.SetPixel(x0 - y, y0 - x, col);
+                _screen.SetPixel(x0 + y, y0 - x, col);
+                _screen.SetPixel(x0 + x, y0 - y, col);
+
+                if(err <= 0) {
+                    y++;
+                    err += dy;
+                    dy += 2;
+                }
+                if(err > 0) {
+                    x--;
+                    dx += 2;
+                    err += (-rad << 1) + dx;
+                }
+            }
+        }*/
+
+        void _circb(int x0, int y0, int rad, int col) {
+            _ellipse(x0, y0, rad, rad, col);
+        }
+
+        // Based off of code from SDL from: http://www.ferzkopp.net/Software/SDL2_gfx/Docs/html/_s_d_l2__gfx_primitives_8c_source.html#l01598
+        void _ellipse(int x, int y, int rx, int ry, int col) {
+            //int result;
+            int ix, iy;
+            int h, i, j, k;
+            int oh, oi, oj, ok;
+            int xmh, xph, ypk, ymk;
+            int xmi, xpi, ymj, ypj;
+            int xmj, xpj, ymi, ypi;
+            int xmk, xpk, ymh, yph;
+
+            if((rx < 0) || (ry < 0)) {
+                return;
+            }
+
+            if(rx == 0) {
+                _line(x, y - ry, x, y + ry, col);
+                return;
+            }
+
+            if(ry == 0) {
+                _line(x - rx, y, x + rx, y, col);
+                return;
+            }
+
+            //result = 0;
+
+            oh = oi = oj = ok = 0xFFFF;
+
+            if(rx > ry) {
+                ix = 0;
+                iy = rx * 64;
+
+                do {
+                    h = (ix + 32) >> 6;
+                    i = (iy + 32) >> 6;
+                    j = (h * ry) / rx;
+                    k = (i * ry) / rx;
+
+                    if(((ok != k) && (oj != k)) || ((oj != j) && (ok != j)) || (k != j)) {
+                        xph = x + h;
+                        xmh = x - h;
+                        if(k > 0) {
+                            ypk = y + k;
+                            ymk = y - k;
+                            _pix(xmh, ypk, col);
+                            _pix(xph, ypk, col);
+                            _pix(xmh, ymk, col);
+                            _pix(xph, ymk, col);
+                        } else {
+                            _pix(xmh, y, col);
+                            _pix(xph, y, col);
+                        }
+                        ok = k;
+                        xpi = x + i;
+                        xmi = x - i;
+                        if(j > 0) {
+                            ypj = y + j;
+                            ymj = y - j;
+                            _pix(xmi, ypj, col);
+                            _pix(xpi, ypj, col);
+                            _pix(xmi, ymj, col);
+                            _pix(xpi, ymj, col);
+                        } else {
+                            _pix(xmi, y, col);
+                            _pix(xpi, y, col);
+                        }
+                        oj = j;
+                    }
+
+                    ix = ix + iy / rx;
+                    iy = iy + ix / rx;
+                } while(i > h);
+            } else {
+                ix = 0;
+                iy = ry * 64;
+
+                do {
+                    h = (ix + 32) >> 6;
+                    i = (iy + 32) >> 6;
+                    j = (h * rx) / ry;
+                    k = (i * rx) / ry;
+
+                    if(((oi != i) && (oh != i)) || ((oh != h) && (oi != h) && (i != h))) {
+                        xmj = x - j;
+                        xpj = x + j;
+                        if(i > 0) {
+                            ypi = y + i;
+                            ymi = y - i;
+                            _pix(xmj, ypi, col);
+                            _pix(xpj, ypi, col);
+                            _pix(xmj, ymi, col);
+                            _pix(xpj, ymi, col);
+                        } else {
+                            _pix(xmj, y, col);
+                            _pix(xpj, y, col);
+                        }
+                        oi = i;
+                        xmk = x - k;
+                        xpk = x + k;
+                        if(h > 0) {
+                            yph = y + h;
+                            ymh = y - h;
+                            _pix(xmk, yph, col);
+                            _pix(xpk, yph, col);
+                            _pix(xmk, ymh, col);
+                            _pix(xpk, ymh, col);
+                        } else {
+                            _pix(xmk, y, col);
+                            _pix(xpk, y, col);
+                        }
+                        oh = h;
+                    }
+                    ix = ix + iy / ry;
+                    iy = iy - ix / ry;
+                } while(i > h);
+            }
+        }
+
+        // Implementation taken from: https://stackoverflow.com/a/1237519 with modifications from td-lambda's comment
+        void _circ(int x0, int y0, int rad, int col) {
+            for(int y = -rad; y <= rad; y++) {
+                for(int x = -rad; x <= rad; x++) {
+                    if(x * x + y * y < rad * rad + rad) {
+                        _screen.SetPixel(x0 + x, y0 + y, col);
+                    }
+                }
+            }
+        }
+
+        void _rectb(int x, int y, int w, int h, int col) {
+            _line(x, y, x + w - 1, y, col);
+            _line(x, y + h - 1, x + w - 1, y + h - 1, col);
+            _line(x, y, x, y + h - 1, col);
+            _line(x + w - 1, y, x + w - 1, y + h - 1, col);
+        }
+
+        void _rect(int x, int y, int w, int h, int col) {
+            for(int i = 0; i < h; i++) {
+                _line(x, y + i, x + w - 1, y + i, col);
+            }
+        }
+
         static System & Get() {
             return *system;
         }
@@ -384,6 +615,42 @@ namespace drak {
             return system->_random(m, n);
         }
 
+        static void Memcpy(int dest, int src, int len) {
+            system->_memcpy(dest, src, len);
+        }
+
+        static void Memset(int dest, int val, int len) {
+            system->_memset(dest, val, len);
+        }
+
+        static int Peek(int addr) {
+            return system->_peek(addr);
+        }
+
+        static void Poke(int addr, int val) {
+            system->_poke(addr, val);
+        }
+
+        static void Line(int x0, int y0, int x1, int y1, int col) {
+            system->_line(x0, y0, x1, y1, col);
+        }
+
+        static void Circb(int x0, int y0, int rad, int col) {
+            system->_circb(x0, y0, rad, col);
+        }
+
+        static void Circ(int x0, int y0, int rad, int col) {
+            system->_circ(x0, y0, rad, col);
+        }
+
+        static void Rectb(int x, int y, int w, int h, int col) {
+            system->_rectb(x, y, w, h, col);
+        }
+
+        static void Rect(int x, int y, int w, int h, int col) {
+            system->_rect(x, y, w, h, col);
+        }
+
         static void InitializeSystem() {
             system = std::make_shared<System>();
 
@@ -407,28 +674,28 @@ namespace drak {
             //scriptEngine.add(fun(&System::Clip), "clip");
             scriptEngine.add(fun(&System::Cls), "cls");
             scriptEngine.add(fun([]() { System::Cls(); }), "cls");
-            //scriptEngine.add(fun(&System::Circ), "circ");
-            //scriptEngine.add(fun(&System::Circb), "circb");
+            scriptEngine.add(fun(&System::Circ), "circ");
+            scriptEngine.add(fun(&System::Circb), "circb");
             scriptEngine.add(fun(&System::Exit), "exit");
             //scriptEngine.add(fun(&System::Font), "font");
-            //scriptEngine.add(fun(&System::Line), "line");
+            scriptEngine.add(fun(&System::Line), "line");
             //scriptEngine.add(fun(&System::Map), "map");
-            //scriptEngine.add(fun(&System::Memcpy), "memcpy");
-            //scriptEngine.add(fun(&System::Memset), "memset");
+            scriptEngine.add(fun(&System::Memcpy), "memcpy");
+            scriptEngine.add(fun(&System::Memset), "memset");
             //scriptEngine.add(fun(&System::Mget), "mget");
             //scriptEngine.add(fun(&System::Mouse), "mouse");
             //scriptEngine.add(fun(&System::Mset), "mset");
             //scriptEngine.add(fun(&System::Music), "music");
-            //scriptEngine.add(fun(&System::Peek), "peek");
+            scriptEngine.add(fun(&System::Peek), "peek");
             //scriptEngine.add(fun(&System::Peek4), "peek4");
             scriptEngine.add(fun(&System::Pix), "pix");
             scriptEngine.add(fun([](int x, int y) -> int { return System::Pix(x, y); }), "pix");
             //scriptEngine.add(fun(&System::Pmem), "pmem");
-            //scriptEngine.add(fun(&System::Poke), "poke");
+            scriptEngine.add(fun(&System::Poke), "poke");
             //scriptEngine.add(fun(&System::Poke4), "poke4");
             //scriptEngine.add(fun(&System::Text), "text");
-            //scriptEngine.add(fun(&System::Rect), "rect");
-            //scriptEngine.add(fun(&System::Rectb), "rectb");
+            scriptEngine.add(fun(&System::Rect), "rect");
+            scriptEngine.add(fun(&System::Rectb), "rectb");
             //scriptEngine.add(fun(&System::Sfx), "sfx");
             //scriptEngine.add(fun(&System::Spr), "spr");
             //scriptEngine.add(fun(&System::Sync), "sync");
@@ -446,6 +713,8 @@ namespace drak {
             auto & lua = system->LuaScriptEngine();
 
             lua.open_libraries(
+                sol::lib::jit,
+                sol::lib::bit32,
                 sol::lib::base,
                 sol::lib::string,
                 sol::lib::math,
@@ -471,11 +740,22 @@ namespace drak {
                 &System::Cls,
                 []() { System::Cls(); }
             );
+            lua["circ"] = &System::Circ;
+            lua["circb"] = &System::Circb;
             lua["exit"] = &System::Exit;
+            lua["line"] = &System::Line;
+            lua["memcpy"] = &System::Memcpy;
+            lua["memset"] = &System::Memset;
+            lua["peek"] = &System::Peek;
             lua["pix"] = sol::overload(
                 &System::Pix,
-                [](int x, int y) -> int { return System::Pix(x, y); }
+                [](int x, int y) -> int { return System::Pix(x, y); },
+                [](double x, double y, int col) -> int { return System::Pix(x, y, col); },
+                [](double x, double y) -> int { return System::Pix(x, y); }
             );
+            lua["poke"] = &System::Poke;
+            lua["rect"] = &System::Rect;
+            lua["rectb"] = &System::Rectb;
             lua["time"] = &System::Time;
             lua["trace"] = &System::Trace;
             lua["random"] = sol::overload(
