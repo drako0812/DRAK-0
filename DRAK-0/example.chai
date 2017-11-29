@@ -10,11 +10,11 @@ def update() {
   }
 }
 
--- potential optimization
+// potential optimization
 
--- def update() {
---     FOR2("j", 0, 240, 1, "i", 0, 320, 1, fun(j, i) {
---         var c = random(0, 64);
---         pix(i, j, c);
---     });
--- }
+// def update() {
+//     FOR2("j", 0, 240, 1, "i", 0, 320, 1, fun(j, i) {
+//         var c = random(0, 64);
+//         pix(i, j, c);
+//     });
+// }

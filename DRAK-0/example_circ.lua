@@ -7,7 +7,7 @@ for i = 0, 50 do
         dx = random(1, 2) * d,
         dy = random(1, 2) * d,
         r = random(6, 12),
-        c = math.random(1, 6)
+        c = random(1, 64)
     }
     balls[i] = ball
     d = d * -1

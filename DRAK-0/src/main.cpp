@@ -70,8 +70,10 @@ const sf::Vector2u desired_size(320, 240);
 
 int main(int argc, char * argv[]) {
     std::string do_source;
+    bool sprite_provided = false;
+    std::string sprite_image;
     drak::System::ScriptLanguage lang;
-    if(argc >= 2) {
+    if(argc >= 3) {
         std::string lang_str = argv[1];
         if(lang_str == "chai") {
             lang = drak::System::ScriptLanguage::ChaiScript;
@@ -87,12 +89,19 @@ int main(int argc, char * argv[]) {
         std::string filename = argv[2];
         do_source = readFile(filename);
 
+        // Load sprites
+        if(argc >= 4) {
+            sprite_image = argv[3];
+            if(sprite_image != "--") {
+                sprite_provided = true;
+            }
+        }
     } else {
         //do_source = source;
         nowide::cout << "ERROR: No input script" << std::endl;
         nowide::cout << "USAGE:" << std::endl;
-        nowide::cout << "DRAK-0.exe chai <chaiscript_file.chai>" << std::endl;
-        nowide::cout << "DRAK-0.exe lua <lua_file.lua>" << std::endl;
+        nowide::cout << "DRAK-0.exe chai <chaiscript_file.chai> [sprite-image]" << std::endl;
+        nowide::cout << "DRAK-0.exe lua <lua_file.lua> [sprite-image]" << std::endl;
         return 0;
     }
 
@@ -117,6 +126,10 @@ int main(int argc, char * argv[]) {
         // Load Script/Cartridge
         if(!sys.LoadScript(lang, do_source)) {
             nowide::cout << "ERROR: Missing `update` function" << std::endl;
+            sys.Quit();
+        }
+        if(!sys.ImportSprites(sprite_image)) {
+            nowide::cout << "ERROR: Importing sprites failed ^^" << std::endl;
             sys.Quit();
         }
 
@@ -149,11 +162,11 @@ int main(int argc, char * argv[]) {
         }
 
     } catch(...) {
-        drak::System::UnitializeSystem();
+        drak::System::UninitializeSystem();
         throw;
     }
 
-    drak::System::UnitializeSystem();
+    drak::System::UninitializeSystem();
 
     nowide::clog.flush();
     nowide::cerr.flush();

@@ -6,11 +6,11 @@ function update()
         circb(120 + 80 * math.sin(a),
             68 + 40 * math.cos(a),
             i + time() / 40 % space,
-            43)
+            rgb(1, 2, 3))
         circb(120 + 80 * math.sin(a / 2),
             68 + 40 * math.cos(a / 2),
             i + time() / 40 % space,
-            43)
+            rgb(1, 2, 3))
     end
     a = a + math.pi / 240
 end

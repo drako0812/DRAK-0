@@ -141,9 +141,9 @@
       <AdditionalLibraryDirectories>$(SolutionDir)deps\luajit-2.0\src;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
     <PreBuildEvent>
-      <Command>cd $(SolutionDir)deps\luajit-2.0\src
-msvcbuild
-cd $(ProjectDir)</Command>
+      <Command>rem cd $(SolutionDir)deps\luajit-2.0\src
+rem msvcbuild
+rem cd $(ProjectDir)</Command>
     </PreBuildEvent>
     <PreBuildEvent>
       <Message>Build LuaJIT</Message>
@@ -169,9 +169,9 @@ cd $(ProjectDir)</Command>
       <AdditionalLibraryDirectories>$(SolutionDir)deps\luajit-2.0\src;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
     <PreBuildEvent>
-      <Command>cd $(SolutionDir)deps\luajit-2.0\src
-msvcbuild
-cd $(ProjectDir)</Command>
+      <Command>rem cd $(SolutionDir)deps\luajit-2.0\src
+rem msvcbuild
+rem cd $(ProjectDir)</Command>
     </PreBuildEvent>
     <PreBuildEvent>
       <Message>Build LuaJIT</Message>
@@ -201,9 +201,9 @@ cd $(ProjectDir)</Command>
       <AdditionalLibraryDirectories>$(SolutionDir)deps\luajit-2.0\src;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
     <PreBuildEvent>
-      <Command>cd $(SolutionDir)deps\luajit-2.0\src
-msvcbuild
-cd $(ProjectDir)</Command>
+      <Command>rem cd $(SolutionDir)deps\luajit-2.0\src
+rem msvcbuild
+rem cd $(ProjectDir)</Command>
     </PreBuildEvent>
     <PreBuildEvent>
       <Message>Build LuaJIT</Message>
@@ -233,9 +233,9 @@ cd $(ProjectDir)</Command>
       <AdditionalLibraryDirectories>$(SolutionDir)deps\luajit-2.0\src;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
     <PreBuildEvent>
-      <Command>cd $(SolutionDir)deps\luajit-2.0\src
-msvcbuild
-cd $(ProjectDir)</Command>
+      <Command>rem cd $(SolutionDir)deps\luajit-2.0\src
+rem msvcbuild
+rem cd $(ProjectDir)</Command>
     </PreBuildEvent>
     <PreBuildEvent>
       <Message>Build LuaJIT</Message>
@@ -254,6 +254,24 @@ cd $(ProjectDir)</Command>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="src\system\api.cpp">
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">..\pch.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">..\pch.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">..\pch.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Release|x64'">..\pch.h</PrecompiledHeaderFile>
+    </ClCompile>
+    <ClCompile Include="src\system\internal.cpp">
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">..\pch.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">..\pch.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">..\pch.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Release|x64'">..\pch.h</PrecompiledHeaderFile>
+    </ClCompile>
+    <ClCompile Include="src\system\system.cpp">
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">..\pch.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">..\pch.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">..\pch.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Release|x64'">..\pch.h</PrecompiledHeaderFile>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -277,6 +295,11 @@ cd $(ProjectDir)</Command>
     <None Include="example_rect.lua" />
     <None Include="example_rectb.lua" />
     <None Include="example_sphere.lua" />
+    <None Include="example_spr.lua" />
+    <None Include="example_sprite_bench.lua" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="example_sprites.png" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

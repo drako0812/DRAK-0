@@ -4,7 +4,7 @@ DEVIATION = 150
 SPEED = 1 / 500
 RECT_COUNT = 70
 RECT_STEP = 4
-RECT_COLOR = 43
+RECT_COLOR = rgb(1, 2, 3)
 
 function update()
     cls()

@@ -24,6 +24,15 @@
     <ClCompile Include="src\pch.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\system\system.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\system\internal.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\system\api.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\color.hpp">
@@ -60,5 +69,12 @@
     <None Include="example_rectb.lua" />
     <None Include="example_rect.lua" />
     <None Include="example_sphere.lua" />
+    <None Include="example_spr.lua" />
+    <None Include="example_sprite_bench.lua" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="example_sprites.png">
+      <Filter>Resource Files</Filter>
+    </Image>
   </ItemGroup>
 </Project>
