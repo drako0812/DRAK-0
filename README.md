@@ -14,20 +14,37 @@ A fantasy console written in C++ using SFML and using ChaiScript for scripting.
 
 **NOTE: these are intended features, they are not yet available.**
 
-- [ ] DRAK-0 has a 320x240 6-bit screen.
-- [ ] The palette has 64 colors and is customizable.
-- [ ] It has 5 256x256 pixel sprite banks with a default intent of:
+- [x] DRAK-0 has a 320x240 6-bit screen (internally still 8-bits).
+- [x] The palette has 64 colors and is customizable.
+- [x] It has 5 256x256 pixel sprite banks with a default intent of:
   - Bank 0 --> Custom Font
   - Banks 1-2 --> Background Sprites
   - Banks 3-4 --> Foreground Sprites
 - [ ] It has an 8x8 map bank each containning a 40x30 8x8 sprite map
-- [ ] It has a 256 KiB code bank
+- [x] It has a 256 KiB code bank
 - [ ] It has a 64 KiB data bank (for storing save data)
-- [ ] It has support for simultaneous:
-  - [ ] 2 gamepads (d-pad, a, b, x, y, start, select)
-  - [ ] 2 2-button mice
-- [ ] Scripting supported through ChaiScript
+- [x] It has support for simultaneous:
+  - [x] 2 gamepads (d-pad, a, b, x, y, start, select) (Currently input is the same for both)
+  - [x] 2 2-button mice (Currently input is the same for both)
+- [x] Scripting supported through ChaiScript/Lua/LuaJIT
 
+## Using
+**NOTE: It's very much possible that the builds under GitHub's Releases tabs only work on Windows 10**
+
+1. Download the a build from the Releases tab, or build it manually. (See below)
+2. Now run depending on which build you downloaded:
+   ```batch
+   DRAK-0_x64_Release.exe <lua|chai> <script_path> [<sprite_bank_file>]
+   DRAK-0_x64_Debug.exe <lua|chai> <script_path> [<sprite_bank_file>]
+   DRAK-0_x86_Release.exe <lua|chai> <script_path> [<sprite_bank_file>]
+   DRAK-0_x86_Debug.exe <lua|chai> <script_path> [<sprite_bank_file>]
+   ```
+   - The first option `<lua|chai>` determines which language the script is written in.
+     - `lua` for a Lua script.
+     - `chai` for a ChaiScript script.
+   - The second option is the path to the script file. If the path contains spaces, you probably want to use `"` around it.
+   - The third option is optional (redundancy :) ), if present, it is the path to an image file (ie .png) which contains the entire sprite bank for the game. It must be 256x1280 pixels. *Currently, if the image does not match the default palette, it tries to match the colors to those in the default palette.*
+   
 ## Building (Visual Studio 2017)
 **NOTE: Currently this is the only build option available.**
 
@@ -44,8 +61,8 @@ You should just be able to build and run it. Easy peasy. :)
    NOTE: To use them yourself you will need to install vcpkg and install SFML using one or all of the following:
 
    ```batch
-   vcpkg install sfml:x86-windows-static
-   vcpkg install sfml:x64-windows-static
+   vcpkg install sfml:x86-windows
+   vcpkg install sfml:x64-windows
    ```
 
 #### Other Dependencies
@@ -53,6 +70,10 @@ You should just be able to build and run it. Easy peasy. :)
 1. [ChaiScript](https://github.com/ChaiScript/ChaiScript) this is added into the repo manually from github.
 2. [Boost.Nowide](https://github.com/artyom-beilis/nowide) this is added into repo manually from github.
 3. [randutils](https://gist.github.com/imneme/540829265469e673d045) this is added into the repo manually from github.
+4. **GSL-Lite** is used mainly for the support of the gsl::span type; although, I might use it more to conform more to the Guidelines.
+5. [luajit-2.0](https://github.com/LuaJIT/LuaJIT) For lua support.
+6. [lua](https://www.lua.org) Just in case I need to add it back in for supporting lua on unusual platforms
+6. [sol2](https://github.com/ThePhD/sol2) To make binding to Lua a lot easier.
  
 ## Licensing
 
