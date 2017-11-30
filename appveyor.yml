@@ -19,7 +19,7 @@ cache:
  - c:\tools\vcpkg\installed\
  - c:\projects\drak-0\drak-0\obj\
 install:
- - .\install.bat
+ - %comspec% /c .\install.bat
 after_build:
  - del /S "C:\projects\DRAK-0\%proj_platform%\%proj_configuration%\*.iobj"
  - del /S "C:\projects\DRAK-0\%proj_platform%\%proj_configuration%\*.ipdb"
