@@ -140,14 +140,8 @@
       <AdditionalDependencies>lua51.lib;luajit.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <AdditionalLibraryDirectories>$(SolutionDir)deps\luajit-2.0\src;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
-    <PreBuildEvent>
-      <Command>cd $(SolutionDir)deps\luajit-2.0\src
-msvcbuild
-cd $(ProjectDir)</Command>
-    </PreBuildEvent>
-    <PreBuildEvent>
-      <Message>Build LuaJIT</Message>
-    </PreBuildEvent>
+    <PreBuildEvent />
+    <PreBuildEvent />
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
@@ -168,14 +162,8 @@ cd $(ProjectDir)</Command>
       <AdditionalDependencies>lua51.lib;luajit.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <AdditionalLibraryDirectories>$(SolutionDir)deps\luajit-2.0\src;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
-    <PreBuildEvent>
-      <Command>cd $(SolutionDir)deps\luajit-2.0\src
-msvcbuild
-cd $(ProjectDir)</Command>
-    </PreBuildEvent>
-    <PreBuildEvent>
-      <Message>Build LuaJIT</Message>
-    </PreBuildEvent>
+    <PreBuildEvent />
+    <PreBuildEvent />
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
@@ -200,14 +188,8 @@ cd $(ProjectDir)</Command>
       <AdditionalDependencies>lua51.lib;luajit.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <AdditionalLibraryDirectories>$(SolutionDir)deps\luajit-2.0\src;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
-    <PreBuildEvent>
-      <Command>cd $(SolutionDir)deps\luajit-2.0\src
-msvcbuild
-cd $(ProjectDir)</Command>
-    </PreBuildEvent>
-    <PreBuildEvent>
-      <Message>Build LuaJIT</Message>
-    </PreBuildEvent>
+    <PreBuildEvent />
+    <PreBuildEvent />
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
@@ -232,14 +214,8 @@ cd $(ProjectDir)</Command>
       <AdditionalDependencies>lua51.lib;luajit.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <AdditionalLibraryDirectories>$(SolutionDir)deps\luajit-2.0\src;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
-    <PreBuildEvent>
-      <Command>cd $(SolutionDir)deps\luajit-2.0\src
-msvcbuild
-cd $(ProjectDir)</Command>
-    </PreBuildEvent>
-    <PreBuildEvent>
-      <Message>Build LuaJIT</Message>
-    </PreBuildEvent>
+    <PreBuildEvent />
+    <PreBuildEvent />
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="..\deps\nowide_standalone\src\iostream.cpp">
