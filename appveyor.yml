@@ -57,3 +57,4 @@ for:
      artifact: drak-0_$(platform)_$(configuration)
      draft: true
      prelease: true
+
