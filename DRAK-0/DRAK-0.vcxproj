@@ -141,9 +141,9 @@
       <AdditionalLibraryDirectories>$(SolutionDir)deps\luajit-2.0\src;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
     <PreBuildEvent>
-      <Command>rem cd $(SolutionDir)deps\luajit-2.0\src
-rem msvcbuild
-rem cd $(ProjectDir)</Command>
+      <Command>cd $(SolutionDir)deps\luajit-2.0\src
+msvcbuild
+cd $(ProjectDir)</Command>
     </PreBuildEvent>
     <PreBuildEvent>
       <Message>Build LuaJIT</Message>
@@ -169,9 +169,9 @@ rem cd $(ProjectDir)</Command>
       <AdditionalLibraryDirectories>$(SolutionDir)deps\luajit-2.0\src;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
     <PreBuildEvent>
-      <Command>rem cd $(SolutionDir)deps\luajit-2.0\src
-rem msvcbuild
-rem cd $(ProjectDir)</Command>
+      <Command>cd $(SolutionDir)deps\luajit-2.0\src
+msvcbuild
+cd $(ProjectDir)</Command>
     </PreBuildEvent>
     <PreBuildEvent>
       <Message>Build LuaJIT</Message>
@@ -201,9 +201,9 @@ rem cd $(ProjectDir)</Command>
       <AdditionalLibraryDirectories>$(SolutionDir)deps\luajit-2.0\src;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
     <PreBuildEvent>
-      <Command>rem cd $(SolutionDir)deps\luajit-2.0\src
-rem msvcbuild
-rem cd $(ProjectDir)</Command>
+      <Command>cd $(SolutionDir)deps\luajit-2.0\src
+msvcbuild
+cd $(ProjectDir)</Command>
     </PreBuildEvent>
     <PreBuildEvent>
       <Message>Build LuaJIT</Message>
@@ -233,9 +233,9 @@ rem cd $(ProjectDir)</Command>
       <AdditionalLibraryDirectories>$(SolutionDir)deps\luajit-2.0\src;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
     <PreBuildEvent>
-      <Command>rem cd $(SolutionDir)deps\luajit-2.0\src
-rem msvcbuild
-rem cd $(ProjectDir)</Command>
+      <Command>cd $(SolutionDir)deps\luajit-2.0\src
+msvcbuild
+cd $(ProjectDir)</Command>
     </PreBuildEvent>
     <PreBuildEvent>
       <Message>Build LuaJIT</Message>

@@ -153,7 +153,6 @@ namespace drak {
             int page_y = ((page * 256) + (page_off / 32)) + 7;
             for(int sy = 0, scy = y; sy < w * 8; sy++, scy++) {
                 for(int sx = 0, scx = x; sx < h * 8; sx++, scx++) {
-                    //int final_y = page_y + (page * 256);
                     int col = GetSpriteBankPixel(page_x + sx, page_y + sy);
                     SetPixel(scx, scy, (col == ck) ? -1 : col);
                 }
