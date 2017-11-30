@@ -127,7 +127,7 @@
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>SOL_LUAJIT;WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>$(SolutionDir)deps\gsl-lite\include;$(SolutionDir)deps\randutils;$(SolutionDir)deps\nowide_standalone;$(SolutionDir)deps\chaiscript\include;C:\Users\Drako0812\Documents\projects\cpp\DRAK-0\deps\luajit-2.0\src;$(SolutionDir)deps\sol2;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)deps\gsl-lite\include;$(SolutionDir)deps\randutils;$(SolutionDir)deps\nowide_standalone;$(SolutionDir)deps\chaiscript\include;$(SolutionDir)deps\luajit-2.0\src;$(SolutionDir)deps\sol2;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpplatest</LanguageStandard>
       <AdditionalOptions>/bigobj %(AdditionalOptions)</AdditionalOptions>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
@@ -149,7 +149,7 @@
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>SOL_LUAJIT;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>$(SolutionDir)deps\gsl-lite\include;$(SolutionDir)deps\randutils;$(SolutionDir)deps\nowide_standalone;$(SolutionDir)deps\chaiscript\include;C:\Users\Drako0812\Documents\projects\cpp\DRAK-0\deps\luajit-2.0\src;$(SolutionDir)deps\sol2;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)deps\gsl-lite\include;$(SolutionDir)deps\randutils;$(SolutionDir)deps\nowide_standalone;$(SolutionDir)deps\chaiscript\include;$(SolutionDir)deps\luajit-2.0\src;$(SolutionDir)deps\sol2;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpplatest</LanguageStandard>
       <AdditionalOptions>/bigobj %(AdditionalOptions)</AdditionalOptions>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
@@ -173,7 +173,7 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>SOL_LUAJIT;WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>$(SolutionDir)deps\gsl-lite\include;$(SolutionDir)deps\randutils;$(SolutionDir)deps\nowide_standalone;$(SolutionDir)deps\chaiscript\include;C:\Users\Drako0812\Documents\projects\cpp\DRAK-0\deps\luajit-2.0\src;$(SolutionDir)deps\sol2;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)deps\gsl-lite\include;$(SolutionDir)deps\randutils;$(SolutionDir)deps\nowide_standalone;$(SolutionDir)deps\chaiscript\include;$(SolutionDir)deps\luajit-2.0\src;$(SolutionDir)deps\sol2;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpplatest</LanguageStandard>
       <AdditionalOptions>/bigobj %(AdditionalOptions)</AdditionalOptions>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
@@ -199,7 +199,7 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>SOL_LUAJIT;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>$(SolutionDir)deps\gsl-lite\include;$(SolutionDir)deps\randutils;$(SolutionDir)deps\nowide_standalone;$(SolutionDir)deps\chaiscript\include;C:\Users\Drako0812\Documents\projects\cpp\DRAK-0\deps\luajit-2.0\src;$(SolutionDir)deps\sol2;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)deps\gsl-lite\include;$(SolutionDir)deps\randutils;$(SolutionDir)deps\nowide_standalone;$(SolutionDir)deps\chaiscript\include;$(SolutionDir)deps\luajit-2.0\src;$(SolutionDir)deps\sol2;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpplatest</LanguageStandard>
       <AdditionalOptions>/bigobj %(AdditionalOptions)</AdditionalOptions>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
