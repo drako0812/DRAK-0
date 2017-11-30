@@ -259,3 +259,13 @@ paket-files/
 # Python Tools for Visual Studio (PTVS)
 __pycache__/
 *.pyc
+/deps/luajit-2.0/src/minilua.lib
+/deps/luajit-2.0/src/minilua.exp
+/deps/luajit-2.0/src/luajit.lib
+/deps/luajit-2.0/src/luajit.exp
+/deps/luajit-2.0/src/luajit.exe
+/deps/luajit-2.0/src/lua51.lib
+/deps/luajit-2.0/src/lua51.exp
+/deps/luajit-2.0/src/lua51.dll
+/deps/luajit-2.0/src/buildvm.lib
+/deps/luajit-2.0/src/buildvm.exp

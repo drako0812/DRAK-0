@@ -5,12 +5,12 @@ if "%proj_platform%"=="x86" ( goto BIT86 ) else ( if "%proj_platform%"=="x64" ( 
 
 :BIT86
 vcpkg install sfml:x86-windows
-%comspec% /c "C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Auxiliary\Build\vcvars32.bat"
+%comspec% /k "C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Auxiliary\Build\vcvars32.bat"
 goto END
 
 :BIT64
 vcpkg install sfml:x64-windows
-%comspec% /c "C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Auxiliary\Build\vcvars64.bat"
+%comspec% /k "C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Auxiliary\Build\vcvars64.bat"
 goto END
 
 :END
